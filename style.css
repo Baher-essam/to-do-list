@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom , rgba(77, 46, 85, 0.3),rgba(18, 62, 68, 0.8));
+    color: #fff;
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+}
+form :is(input, button)
+{
+    padding:0.5rem;
+    font-size: 2rem;
+    border: none;
+    background: #fff; 
+}
