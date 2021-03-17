@@ -1,3 +1,4 @@
+
 //selectors
 const clear = document.querySelector('.clear');
 const dateElement = document.getElementById('date');
@@ -94,8 +95,6 @@ function completeToDo(element){
 //remove todo
 function removeToDo(element){
   element.parentNode.parentNode.removeChild(element.parentNode);
-
-  
   LIST[element.id].trash = true;
 }
 
@@ -119,3 +118,47 @@ clear.addEventListener('click', function() {
   localStorage.clear();
   location.reload();
 })
+
+
+
+//light mode with local storage
+let lightMode = localStorage.getItem('lightMode');
+const lightModeToggle = document.querySelector('#lightModeToggle');
+
+const enableLightMode = () =>{
+// add the class lightmode to the body
+$('body').addClass('lightMode');
+$('#lightModeToggle').removeClass('disabled');
+$('#lightModeToggle').addClass('enabled');
+//update lightmode at the local storage
+localStorage.setItem('lightMode', 'enabled');
+
+}
+
+const disableLightMode = () =>{
+  // remove the class lightmode to the body
+  $('body').removeClass('lightMode');
+  $('#lightModeToggle').removeClass('enabled');
+  $('#lightModeToggle').addClass('disabled');
+  //update lightmode at the local storage
+  localStorage.setItem('lightMode', 'disabled');
+}
+
+//for remembering what was saved last time
+  if ( lightMode === 'enabled')
+    enableLightMode();
+
+
+lightModeToggle.addEventListener("click", () => {
+  lightMode = localStorage.getItem('lightMode');
+  if (lightMode !== 'enabled')
+  {
+    enableLightMode();
+    $('body').addClass('time');
+  }
+  else
+  {
+    disableLightMode();
+    $('body').removeClass('time');
+  }
+});
